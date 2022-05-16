@@ -30,9 +30,6 @@ python `get_effect_predictions.py`  <params>
 *DS_for_variants* - all the scripts needed to run Beluga, such as running it on regions arouns TSS
 
 
-
-# Need to check overview below (might be outdated)
-
 ## Overview
 
 __Pulling TSS locations for genes__
