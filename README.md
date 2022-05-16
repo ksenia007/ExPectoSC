@@ -7,15 +7,15 @@ CLEVER = (Cell LEVel ExpRession)
 ### Main files 
 
 python `add_new_dataset.py` <params> 
-   - Preprocess .h5ad single cell expression file into the accepted format. User can specify groupKey (name of cell type column) and miniumu number of cells the cell type needs to have.
+  - Preprocess .h5ad single cell expression file into the accepted format. User can specify groupKey (name of cell type column) and miniumu number of cells the cell type needs to have.
 
 
 python `train_new_model.py` <params>
-    - Train a new set of models (one per cell type) using the provided dataset (pre-processed by `add_new_dataset.py`)
+  - Train a new set of models (one per cell type) using the provided dataset (pre-processed by `add_new_dataset.py`)
 
 
 python `get_effect_predictions.py`  <params>
-    - Get predictions for the set of variants. Full code includes running the deep learning encoder model, which could be time consuming. 
+  - Get predictions for the set of variants. Full code includes running the deep learning encoder model, which could be time consuming. 
 
 
 
