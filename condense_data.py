@@ -171,3 +171,36 @@ def condense_genes_from_file(condense_gene_fn, gene_tss_filename: str, ds_conden
     return condensed_dict
 
 
+def collect_condense_genes_from_csv(condensed_location: str, gene_tss_pd):
+    """Collect already pre-condensed files into dictionary for training.
+        Inputs: 
+            condensed_location - location of the condensed hd5f files 
+            gene_tss_pd - DataFrame with genes [gene_name] and tss [tss] columns
+        Outputs:
+            Dictionary: gene-name - condensed matrix
+            Int: Number of genes that did not have a corresponding file
+    """
+    condensed_dict = {}
+    n_genes_not_found = 0
+
+    for i, row in gene_tss_pd.iterrows():
+        if i%1000==0:
+            print('Collected ', i)
+        filepath = condensed_location + 'condensed_' + row.gene_name+'_'+str(int(row.tss))+'.hd5f'
+
+        if not os.path.exists(filepath):
+            n_genes_not_found += 1
+            continue
+        try:
+            data = h5py.File(filepath, "r")
+            data = data[('full_tss')][:]
+        except:
+            print('Error loading file: ', filepath)
+            continue
+
+        if data is None:
+            continue
+
+        condensed_dict[row.gene_name] = data
+
+    return condensed_dict, n_genes_not_found
