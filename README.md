@@ -2,6 +2,10 @@
 
 CLEVER = (Cell LEVel ExpRession)
 
+The CLEVER framework is described in the following manuscript:
+
+Ksenia Sokolova, Chandra L. Theesfeld, Aaron K. Wong, Zijun Zhang, Kara Dolinski and Olga G. Troyanskaya, CLEVER: Predicting single-cell-resolved gene expression from sequence, Submitted, 2022
+
 ## Code
 
 ### Main files 
