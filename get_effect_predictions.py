@@ -5,8 +5,8 @@ import logging
 import os
 import sys
 import pandas as pd
-from DS_for_variants import *
-from deepsea_expecto_convert import *
+from encoder_for_variants import *
+from beluga_convert import *
 from condense_data import *
 from main_train import *
 

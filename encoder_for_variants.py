@@ -5,7 +5,7 @@ Save each prediction in the specified directory.
 
 import sys
 import time
-from deepsea_expecto_convert import *
+from beluga_convert import *
 from selene_sdk.utils import load_model_from_state_dict
 import numpy as np
 import selene_sdk

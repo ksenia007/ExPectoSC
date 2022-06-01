@@ -24,7 +24,7 @@ import h5py
 from data_utils import *
 
 
-from DS_for_variants import *
+from encoder_for_variants import *
 
 
 def collect_dataX_from_condense(genes, condensed_dict, condensed_length=20020):
