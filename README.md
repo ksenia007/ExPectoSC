@@ -11,7 +11,7 @@ Ksenia Sokolova, Chandra L. Theesfeld, Aaron K. Wong, Zijun Zhang, Kara Dolinski
 ### Main files 
 
 → python `add_new_dataset.py` <params> 
-  - Preprocess .h5ad single cell expression file into the accepted format. User can specify groupKey (name of cell type column) and miniumum number of cells the cell type needs to have.
+  - Preprocess .h5ad single cell expression file into the accepted format. User can specify groupKey (name of cell type column) and minimum number of cells the cell type needs to have.
 
 
 → python `train_new_model.py` <params>
