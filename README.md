@@ -11,7 +11,7 @@ Ksenia Sokolova, Chandra L. Theesfeld, Aaron K. Wong, Zijun Zhang, Kara Dolinski
 ### Main files 
 
 → python `add_new_dataset.py` <params> 
-  - Preprocess .h5ad single cell expression file into the accepted format. User can specify groupKey (name of cell type column) and miniumu number of cells the cell type needs to have.
+  - Preprocess .h5ad single cell expression file into the accepted format. User can specify groupKey (name of cell type column) and miniumum number of cells the cell type needs to have.
 
 
 → python `train_new_model.py` <params>
@@ -19,7 +19,7 @@ Ksenia Sokolova, Chandra L. Theesfeld, Aaron K. Wong, Zijun Zhang, Kara Dolinski
 
 
 → python `get_effect_predictions.py`  <params>
-  - Get predictions for the set of variants. Full code includes running the deep learning encoder model, which could be time consuming. 
+  - Get predictions for the set of variants. Full code includes running the deep learning encoder Module 1, which could be time consuming. 
 
 
 
@@ -31,7 +31,7 @@ Ksenia Sokolova, Chandra L. Theesfeld, Aaron K. Wong, Zijun Zhang, Kara Dolinski
 
 *data_utils* - additional data scripts
 
-*DS_for_variants* - all the scripts needed to run Beluga, such as running it on regions arouns TSS
+*encoder_for_variants* - all the scripts needed to run Beluga, such as running it on regions around TSS
 
 
 ## Overview
@@ -54,7 +54,7 @@ Script uses 2 locations: one to save raw encodings, and another to save condense
 
 
 
-__Train regularized models__
+__Module 2: Train regularized models__
 
 Train cell type specific model, one per cell type. There are different training options: 
 
