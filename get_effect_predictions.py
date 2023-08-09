@@ -78,13 +78,17 @@ if args.run_encoder and not args.ldsc:
 
     #############
     # Condense genes that were in that variants dataframe
-    for index, row in variants_df.iterrows():
-        filename = row['gene_name'] + '_'+str(int(row['tss']))+'.hd5f'
+    unique_genes = variants_df.gene_name.unique()
+    print('Number of genes to condense: ', len(unique_genes))
+    for g in unique_genes:
+        tss = variants_df[variants_df.gene_name==g].iloc[0].tss
+        filename = g + '_'+str(int(tss))+'.hd5f'
         condense_and_save(condense_gene_fn=condense_gene_exponential,
                         filenames=[
                             filename], location_noncondesed=args.encoder_output_save_path,
                         location_save=args.compressed_output_save_path)
     logging.info('Encoding condensed')
+
 
 #############
 # Predictions
