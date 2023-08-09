@@ -13,7 +13,7 @@
 
 
 → python `get_effect_predictions.py`  <params>
-  - Get predictions for the set of variants. Full code includes running the deep learning encoder Module 1, which could be time consuming. This assumes the data is formatted as : [chrom, snp_chromStart, snp_chromEnd, ref, alt, SNP, chrom_gene, tss, chromEnd, strand, gene_name, cage_used, dist]. Note that snp_chromStart is the location of the variant; SNP is the ID of choice, for example chrom_variantLoc_ref_alt. 
+  - Get predictions for the set of variants. Full code includes running the deep learning encoder Module 1, which could be time consuming. This assumes the data is formatted as : \[chrom, snp_chromStart, snp_chromEnd, ref, alt, SNP, chrom_gene, tss, chromEnd, strand, gene_name, cage_used, dist\]. Note that snp_chromStart is the location of the variant; SNP is the ID of choice, for example chrom_variantLoc_ref_alt. 
 
 
 
