@@ -45,7 +45,7 @@ __Expression values__
 
 __Running Beluga on variants for train__
 
-Script uses 2 locations: one to save raw encodings, and another to save condensed encodings. Files are in `.hdf5` format, one file per gene (named as *"gene name"_"tss"* to allow for multiple TSS locations). The encodings run on the reference genome are named as *full_tss*, and the rest are saved with mutation information *location_alt*. File attributes are used to save additional information, such as TSS location, strand etc.  
+Script uses 2 locations: one to save raw encodings, and another to save condensed encodings. Files are in `.hdf5` format, one file per gene (named as *"gene name"_"tss"* to allow for multiple TSS locations). The encodings run on the reference genome are named as *full_tss*, and the rest are saved with mutation information *location_alt*. File attributes are used to save additional information, such as TSS location, strand etc. The weights for the model can be downloaded [here](https://humanbase.readthedocs.io/en/latest/clever.html#download)
 
 
 
