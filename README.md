@@ -1,5 +1,8 @@
 # Atlas of primary cell-type specific sequence models of gene expression and variant effects
 
+Please see the full paper [here](https://www.cell.com/cell-reports-methods/fulltext/S2667-2375(23)00224-2)
+```Ksenia Sokolova, Chandra L. Theesfeld, Aaron K. Wong, Zijun Zhang, Kara Dolinski, Olga G. Troyanskaya, Atlas of primary cell-type-specific sequence models of gene expression and variant effects, Cell Reports Methods, 2023, 100580, ISSN 2667-2375, https://doi.org/10.1016/j.crmeth.2023.100580.```
+
 ## Quick setup
 
 Download and unzip the pre-requisite file (note this might take a couple of minutes):
