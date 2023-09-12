@@ -73,6 +73,11 @@ def condense_mutations_list(condense_gene_fn, gene_name: str, tss: int, ds_nonco
 def condense_and_save(condense_gene_fn, filenames: List[str], location_noncondesed: str,
                       location_save: str):
     """Function to create condesed genes files with the same structure as non-condensed."""
+
+    if not os.path.exists(location_save):
+        print('Create destination folder')
+        os.makedirs(location_save)
+    
     count_total_condensed = 0
     for i, file_name in enumerate(filenames):
 

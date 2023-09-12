@@ -362,6 +362,10 @@ def process_variants_no_ref(variants_file: pd.DataFrame, destination_folder: str
     if use_cuda:
         model = model.cuda()
     print('Start processing file')
+
+    if not os.path.exists(destination_folder):
+        print('Create destination folder')
+        os.makedirs(destination_folder)
     
     running_gene_name = ''
     running_gene_tss = 0
@@ -434,7 +438,11 @@ def process_variants_with_ref(variants_file: pd.DataFrame, destination_folder: s
     if use_cuda:
         model = model.cuda()
     print('Start processing file')
-    
+
+    if not os.path.exists(destination_folder):
+        print('Create destination folder')
+        os.makedirs(destination_folder)
+
     running_gene_name = ''
     running_gene_tss = 0
     long_muts = 0

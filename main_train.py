@@ -610,13 +610,16 @@ def predict_diff_model(model, variants_df, file_location,
 
 
 def collect_predictions_models(models_base, variants, base_save_loc, compressed_encodings_loc, logging,
-                               save_filename_base_name, models_inside_folder='models_full_train',
+                               save_filename_base_name, models_inside_folder=None,
                                tss_col_name='tss',
                                A1='ref', A2='alt'):
     """ 
     Predict effects for variants provided for all models in the folder (one organ). Save ref, alt, deltaDS and final scores. 
     """
-    models_loc = models_base+'/'+models_inside_folder+'/'
+    if models_inside_folder:
+        models_loc = models_base+'/'+models_inside_folder+'/'
+    else:
+        models_loc = models_base+'/'
     models_all = os.listdir(models_loc)
     models_names = [i.split('.')[0] for i in models_all]
     print(models_names)
@@ -629,7 +632,11 @@ def collect_predictions_models(models_base, variants, base_save_loc, compressed_
     for i, model_name in enumerate(models_names):
         print(model_name)
         model_loc = models_loc+model_name+'.txt'
-        model = pickle.load(open(model_loc, 'rb'))
+        try:
+            model = pickle.load(open(model_loc, 'rb'))
+        except:
+            print('error loading model:', model_name)
+            continue
 
         if i == 0:
             dict_preds_REF, problems, delta_ds, dict_preds_ALT = predict_diff_model(model, variants, file_location=compressed_encodings_loc,

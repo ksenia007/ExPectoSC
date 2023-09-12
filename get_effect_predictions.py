@@ -5,6 +5,7 @@ import logging
 import os
 import sys
 import pandas as pd
+import pickle
 from encoder_for_variants import *
 from beluga_convert import *
 from condense_data import *
@@ -34,7 +35,7 @@ parser.add_argument('--ldsc', default=False, action='store_true',
 parser.add_argument('--ldsc-location', default='', type=str,
                     help="LDSC (filtered to +/- 20kb location")                    
 
-parser.add_argument('--models-subfolder', default='models_full_train', type=str,
+parser.add_argument('--models-subfolder', default=None, type=str,
                     help="Subfolder with models")                   
 # Encoder locations
 parser.add_argument('--encoder-model-path', default='resources/deepsea.beluga.pth', type=str,
@@ -100,6 +101,22 @@ if not args.ldsc:
                             save_filename_base_name=args.filename_output,
                             models_inside_folder = args.models_subfolder)
     logging.info('*** DONE ***')
+
+
+    # normalize
+    preds = pd.read_csv(args.save_location_preds+'/'+args.filename_output+'.csv')
+    model_name = args.cell_model_path.split('/')[-1]
+
+    norm_dict = pickle.load(open('resources/1000G_ldsc_scaling.pkl','rb'))
+
+    for i in preds.columns:
+        if i == 'SNP': continue
+        else:
+            preds[i] = (preds[i]-norm_dict[i+', '+model_name]['mean'])/norm_dict[i+', '+model_name]['std']
+
+    preds.to_csv(args.save_location_preds+'/'+args.filename_output+'.csv', index=False)
+
+
 else:
     logging.info('*** LDSC predictions ***')
     chroms = range(1, 24)
@@ -121,5 +138,7 @@ else:
         logging.info('Completed chrom {}'.format(chrom))
     logging.info('*** DONE ***')
         
+
+
 
         
