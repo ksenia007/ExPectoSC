@@ -1,6 +1,33 @@
 # Atlas of primary cell-type specific sequence models of gene expression and variant effects
 
-## Code
+## Quick setup
+
+Download and unzip the pre-requisite file (note this might take a couple of minutes):
+
+```
+cd resources
+wget https://humanbase.s3.us-west-2.amazonaws.com/clever/deepsea.beluga.pth
+cd ..
+```
+
+Please note that you will also need .fasta file for your build (`hg19.fa` needs to be downloaded and put into `resources/reference_files/`)
+
+
+Setup the environment. Make sure you have a working cuda-enabled pytorch. See below for an example
+
+```
+python3.6 -m venv expectosc_env
+source expectosc_env/bin/activate
+pip install -r requirements.txt
+pip install selene-sdk
+pip install torch==1.10.1+cu111 torchvision==0.11.2+cu111 torchaudio==0.10.1 -f https://download.pytorch.org/whl/cu111/torch_stable.html
+```
+
+### Variant effect prediction
+See `resources/test.csv` for an example .csv file. See `example_shell.sh` for getting predictions for the .csv with variants. 
+
+
+## More details
 
 ### Main files 
 
@@ -33,7 +60,7 @@
 
 __Pulling TSS locations for genes__
 
-Used GENCODE database and CAGE peaks databases to pull TSS locaitons. Used only protein coding genes, as noted in the Gencode. 
+Used GENCODE database and CAGE peaks databases to pull TSS locations (only protein coding genes, as noted in the Gencode). 
     - For CAGE used only *p1* peaks
 
 Note: Used hg19 for both CAGE and Gencode. See below for more information on the datasources.
@@ -43,7 +70,7 @@ __Expression values__
 `.h5ad` files are used for the group truth. Cell types with less than 100 cells are dropped (value can be adjusted).
 
 
-__Running Beluga on variants for train__
+__Running encoder on variants for train__
 
 Script uses 2 locations: one to save raw encodings, and another to save condensed encodings. Files are in `.hdf5` format, one file per gene (named as *"gene name"_"tss"* to allow for multiple TSS locations). The encodings run on the reference genome are named as *full_tss*, and the rest are saved with mutation information *location_alt*. File attributes are used to save additional information, such as TSS location, strand etc. The weights for the model can be downloaded [here](https://humanbase.readthedocs.io/en/latest/clever.html#download)
 
